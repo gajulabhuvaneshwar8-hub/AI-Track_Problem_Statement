@@ -1,0 +1,32 @@
+version: "3.9"
+
+# ============================================================
+# AI Payment Reconciliation Agent — Docker Compose
+# Step 1: PostgreSQL only
+# Step 2 will add backend and frontend services
+# ============================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: reconciliation_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       ${POSTGRES_DB:-reconciliation_db}
+      POSTGRES_USER:     ${POSTGRES_USER:-reconcile_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-reconcile_pass}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data/sample:/docker-entrypoint-initdb.d:ro  # optional seed scripts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-reconcile_user} -d ${POSTGRES_DB:-reconciliation_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  postgres_data:
+    name: reconciliation_postgres_data

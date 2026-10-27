@@ -1,0 +1,40 @@
+# ============================================================
+# AI Payment Reconciliation Agent — Python dependencies
+# ============================================================
+
+# Web framework
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart>=0.0.12  # required by FastAPI for form data
+
+# Database
+sqlalchemy==2.0.52
+alembic==1.14.0
+psycopg[binary]>=3.2.10
+
+# Validation / settings
+pydantic>=2.10.3
+pydantic[email]>=2.10.3    # pydantic EmailStr support
+pydantic-settings>=2.6.1
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt>=4.0.0,<5.0.0  # passlib 1.7.4 is incompatible with bcrypt 5.x
+
+# HTTP client (TestClient + AI service calls)
+httpx==0.28.1
+
+# AI / ML (foundation — not used yet in Step 1)
+# Using >= to get prebuilt wheels for Python 3.14
+pandas>=2.2.3
+numpy>=1.26.4
+scikit-learn>=1.4.0
+
+# Environment / utilities
+python-dotenv==1.0.1
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+anyio>=4.0.0              # required for httpx async support in tests

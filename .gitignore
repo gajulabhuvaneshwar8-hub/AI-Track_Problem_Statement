@@ -1,0 +1,58 @@
+# ============================================================
+# Git ignore rules — AI Payment Reconciliation Agent
+# ============================================================
+
+# ── Secrets & environment ─────────────────────────────────
+.env
+**/.env
+!.env.example
+!**/.env.example
+
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+ENV/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Node / Frontend ───────────────────────────────────────
+node_modules/
+dist/
+.next/
+.nuxt/
+out/
+*.local
+
+# ── IDE / Editor ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Uploads / Data ───────────────────────────────────────
+data/uploads/*
+!data/uploads/.gitkeep
+data/sample/*.csv
+data/sample/*.xlsx
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Docker ───────────────────────────────────────────────
+.docker/

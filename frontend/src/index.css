@@ -1,0 +1,78 @@
+/* ─── Google Fonts ─────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+
+/* ─── Design tokens ─────────────────────────────────────────────────────── */
+:root {
+  --color-bg-deep:    #0a0f1e;
+  --color-bg-surface: #111827;
+  --color-bg-card:    #1a2235;
+  --color-border:     rgba(99,130,211,0.18);
+  --color-accent:     #6366f1;
+  --color-accent-2:   #818cf8;
+  --color-success:    #10b981;
+  --color-warning:    #f59e0b;
+  --color-danger:     #ef4444;
+  --color-text:       #e2e8f0;
+  --color-muted:      #64748b;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg-deep);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 3px; }
+
+/* ─── Glassmorphism card ─────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(26, 34, 53, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+/* ─── Gradient text ─────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 50%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Pulse animation ───────────────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.4); opacity: 0.4; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+
+/* ─── Fade-in animation ─────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+/* ─── Status indicator ───────────────────────────────────────────────────── */
+.status-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.ok      { background-color: var(--color-success); }
+.status-dot.error   { background-color: var(--color-danger); }
+.status-dot.loading { background-color: var(--color-warning); }

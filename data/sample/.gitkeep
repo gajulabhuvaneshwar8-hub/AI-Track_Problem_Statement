@@ -1,0 +1,2 @@
+# data/sample — seed SQL scripts or CSV test data
+# Files added here are auto-run by PostgreSQL docker-entrypoint on first start
